@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Home from '../views/Home.vue'
+import Home from '../views/HomeView.vue'
 import CarList from '../views/CarList.vue'
 import Booking from '../views/Booking.vue'
 
