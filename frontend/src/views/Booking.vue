@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useCarStore } from '@/stores/modules/carStore';
-import { useUserStore } from '@/stores/modules/userStore';
+import { useCarStore } from '@/stores/carStore';
+import { useUserStore } from '@/stores/userStore';
 
 const router = useRouter();
 const carStore = useCarStore();
