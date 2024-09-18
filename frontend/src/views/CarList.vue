@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { useCarStore } from '@/stores/carStore';
-import CarCard from '@/components/car/CarCard.vue';
+import CarCard from '@/components/common/CarCard.vue';
 
 const carStore = useCarStore();
 const searchQuery = ref('');
