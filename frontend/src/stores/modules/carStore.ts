@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { ref, computed } from 'vue';
 
 interface Car {
     id: number;
@@ -8,87 +9,83 @@ interface Car {
     availability: boolean;
 }
 
-interface CarState {
-    cars: Car[];
-    loading: boolean;
-    error: string | null;
-}
+export const useCarStore = defineStore('carStore', () => {
+    const cars = ref<Car[]>([]);
+    const loading = ref(false);
+    const error = ref<string | null>(null);
 
-export const useCarStore = defineStore('carStore', {
-    state: (): CarState => ({
-        cars: [],
-        loading: false,
-        error: null,
-    }),
+    const availableCars = computed(() => cars.value.filter(car => car.availability));
+    const carById = (id: number) => computed(() => cars.value.find(car => car.id === id));
 
-    getters: {
-        availableCars: (state) => state.cars.filter(car => car.availability),
-        carById: (state) => (id: number) => state.cars.find(car => car.id === id),
-    },
+    const fetchCars = async () => {
+        loading.value = true;
+        error.value = null;
+        try {
+            const response = await fetch('/api/cars');
+            const data = await response.json();
+            cars.value = data;
+        } catch (err) {
+            error.value = 'Failed to fetch car listings';
+        } finally {
+            loading.value = false;
+        }
+    };
 
-    actions: {
-        async fetchCars() {
-            this.loading = true;
-            this.error = null;
-            try {
-                // Replace with your API endpoint
-                const response = await fetch('/api/cars');
-                const data = await response.json();
-                this.cars = data;
-            } catch (error) {
-                this.error = 'Failed to fetch car listings';
-            } finally {
-                this.loading = false;
+    const addCar = async (newCar: Car) => {
+        try {
+            const response = await fetch('/api/cars', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newCar),
+            });
+            const data = await response.json();
+            cars.value.push(data);
+        } catch (err) {
+            error.value = 'Failed to add new car';
+        }
+    };
+
+    const updateCar = async (updatedCar: Car) => {
+        try {
+            const response = await fetch(`/api/cars/${updatedCar.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedCar),
+            });
+            const data = await response.json();
+            const index = cars.value.findIndex(car => car.id === updatedCar.id);
+            if (index !== -1) {
+                cars.value[index] = data;
             }
-        },
+        } catch (err) {
+            error.value = 'Failed to update car';
+        }
+    };
 
-        async addCar(newCar: Car) {
-            try {
-                // Replace with your API endpoint
-                const response = await fetch('/api/cars', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(newCar),
-                });
-                const data = await response.json();
-                this.cars.push(data);
-            } catch (error) {
-                this.error = 'Failed to add new car';
-            }
-        },
+    const deleteCar = async (carId: number) => {
+        try {
+            await fetch(`/api/cars/${carId}`, {
+                method: 'DELETE',
+            });
+            cars.value = cars.value.filter(car => car.id !== carId);
+        } catch (err) {
+            error.value = 'Failed to delete car';
+        }
+    };
 
-        async updateCar(updatedCar: Car) {
-            try {
-                // Replace with your API endpoint
-                const response = await fetch(`/api/cars/${updatedCar.id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(updatedCar),
-                });
-                const data = await response.json();
-                const index = this.cars.findIndex(car => car.id === updatedCar.id);
-                if (index !== -1) {
-                    this.cars[index] = data;
-                }
-            } catch (error) {
-                this.error = 'Failed to update car';
-            }
-        },
-
-        async deleteCar(carId: number) {
-            try {
-                // Replace with your API endpoint
-                await fetch(`/api/cars/${carId}`, {
-                    method: 'DELETE',
-                });
-                this.cars = this.cars.filter(car => car.id !== carId);
-            } catch (error) {
-                this.error = 'Failed to delete car';
-            }
-        },
-    },
+    return {
+        cars,
+        loading,
+        error,
+        availableCars,
+        carById,
+        fetchCars,
+        addCar,
+        updateCar,
+        deleteCar,
+    };
 });
