@@ -1,6 +1,5 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import '../assets/styles/tailwind.css';
 </script>
 
 <template>
@@ -14,7 +13,7 @@ import '../assets/styles/tailwind.css';
     </main>
     
     <footer class="bg-gray-800 text-white p-4 text-center">
-      <p>&copy; 2023 Travel X Car Booking. All rights reserved.</p>
+      <p>&copy; 2024 Travel X Car Booking. All rights reserved.</p>
     </footer>
   </div>
 </template>
