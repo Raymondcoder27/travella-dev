@@ -7,18 +7,19 @@ import { useCarStore } from '@/stores/carStore';
 const carStore = useCarStore();
 const featuredCars = ref(carStore.getFeaturedCars.value);
 </script>
+
 <template>
   <div class="home-view">
     <!-- Hero Section -->
     <section class="hero bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('@/assets/hero-bg.jpg');">
       <div class="text-center">
-        <h1 class="text-5xl font-bold">Find Your Perfect Car</h1>
+        <h1 class="text-5xl font-bold">Discover Your Dream Ride</h1>
         <div class="mt-6 flex justify-center space-x-2">
           <input type="text" placeholder="From" class="p-2 rounded-md text-black" />
           <input type="text" placeholder="To" class="p-2 rounded-md text-black" />
           <input type="number" placeholder="Passengers" class="p-2 rounded-md text-black" />
           <input type="date" placeholder="Start Date" class="p-2 rounded-md text-black" />
-          <button class="p-2 bg-yellow-500 hover:bg-yellow-600 rounded-md text-white">Find a Car</button>
+          <button class="p-2 bg-yellow-400 hover:bg-yellow-500 rounded-md text-white">Find a Car</button>
         </div>
       </div>
     </section>
@@ -26,7 +27,7 @@ const featuredCars = ref(carStore.getFeaturedCars.value);
     <!-- Featured Listings Section -->
     <section class="featured-listings py-16 bg-gray-100">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-600">Featured Listings</h2>
+        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-500">Top Picks for You</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <CarCard v-for="car in featuredCars" :key="car.id" :car="car" />
         </div>
@@ -36,19 +37,40 @@ const featuredCars = ref(carStore.getFeaturedCars.value);
     <!-- Why Choose Us Section -->
     <section class="why-choose-us py-16 bg-white">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-600">Why Choose Us</h2>
+        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-500">Why Travel with Us?</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="benefit-card p-6 bg-yellow-100 shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Convenient Booking</h3>
-            <p class="mt-4">Easily book your car online with our user-friendly platform.</p>
+            <h3 class="text-2xl font-bold">Effortless Booking</h3>
+            <p class="mt-4">Book your car in just a few clicks with our seamless platform.</p>
           </div>
           <div class="benefit-card p-6 bg-yellow-100 shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Wide Range of Cars</h3>
-            <p class="mt-4">Choose from a variety of cars to suit your travel needs.</p>
+            <h3 class="text-2xl font-bold">Diverse Selection</h3>
+            <p class="mt-4">Choose from a wide range of cars to match your travel style.</p>
           </div>
           <div class="benefit-card p-6 bg-yellow-100 shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Affordable Prices</h3>
-            <p class="mt-4">Get the best deals on car rentals with competitive pricing.</p>
+            <h3 class="text-2xl font-bold">Unbeatable Prices</h3>
+            <p class="mt-4">Enjoy the best deals on car rentals with our competitive rates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="what-we-offer py-16 bg-gray-100">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-500">What We Bring to the Table</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="offer-card p-6 bg-white shadow-md rounded-md text-center">
+            <h3 class="text-2xl font-bold">Flexible Booking</h3>
+            <p class="mt-4">Use our "free cancellation" filter for hassle-free bookings.</p>
+          </div>
+          <div class="offer-card p-6 bg-white shadow-md rounded-md text-center">
+            <h3 class="text-2xl font-bold">Price Alerts</h3>
+            <p class="mt-4">Set alerts to get notified when prices drop.</p>
+          </div>
+          <div class="offer-card p-6 bg-white shadow-md rounded-md text-center">
+            <h3 class="text-2xl font-bold">Customizable Filters</h3>
+            <p class="mt-4">Filter results by airport pick-up, GPS, and more to suit your needs.</p>
           </div>
         </div>
       </div>
@@ -57,7 +79,7 @@ const featuredCars = ref(carStore.getFeaturedCars.value);
     <!-- Testimonials Section -->
     <section class="testimonials py-16 bg-gray-100">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-600">What Our Customers Say</h2>
+        <h2 class="text-4xl font-bold text-center mb-8 text-yellow-500">What Our Customers Say</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Add testimonial cards here -->
         </div>
