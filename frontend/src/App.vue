@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router';
 
 <template>
   <div class="min-h-screen flex flex-col">
-    <header class="bg-black-900 text-white p-4">
+    <header class="bg-gray-950 text-white p-4">
       <h1 class="text-2xl font-bold">Zuri-Link</h1>
     </header>
     
@@ -12,7 +12,7 @@ import { RouterView } from 'vue-router';
       <RouterView />
     </main>
     
-    <footer class="bg-gray-800 text-white p-4 text-center">
+    <footer class="bg-gray-9500 text-white p-4 text-center">
       <p>&copy; 2024 Travel X Car Booking. All rights reserved.</p>
     </footer>
   </div>
