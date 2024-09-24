@@ -7,6 +7,7 @@ interface Car {
     model: string;
     price: number;
     availability: boolean;
+    featured: boolean; // Add this attribute to indicate if a car is featured
 }
 
 export const useCarStore = defineStore('carStore', () => {
@@ -16,6 +17,7 @@ export const useCarStore = defineStore('carStore', () => {
 
     const availableCars = computed(() => cars.value.filter(car => car.availability));
     const carById = (id: number) => computed(() => cars.value.find(car => car.id === id));
+    const getFeaturedCars = computed(() => cars.value.filter(car => car.featured)); // Add this computed property
 
     const fetchCars = async () => {
         loading.value = true;
@@ -83,6 +85,7 @@ export const useCarStore = defineStore('carStore', () => {
         error,
         availableCars,
         carById,
+        getFeaturedCars, // Return the new computed property
         fetchCars,
         addCar,
         updateCar,

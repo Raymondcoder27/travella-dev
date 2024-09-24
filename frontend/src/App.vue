@@ -4,16 +4,29 @@ import { RouterView } from 'vue-router';
 
 <template>
   <div class="min-h-screen flex flex-col">
-    <header class="bg-gray-950 text-white p-4">
+    <!-- <header class="bg-gray-950 text-white p-4">
       <h1 class="text-2xl font-bold">Zuri-Link</h1>
+    </header> -->
+    <header class="header bg-white shadow-md">
+      <div class="container mx-auto flex justify-between items-center py-4">
+        <div class="logo text-2xl font-bold">Zuri-Link</div>
+        <nav class="nav">
+          <ul class="flex space-x-4">
+            <li><a href="#" class="text-gray-700">Browse Cars</a></li>
+            <li><a href="#" class="text-gray-700">Travel Plans</a></li>
+            <li><a href="#" class="text-gray-700">My Bookings</a></li>
+            <li><a href="#" class="text-gray-700">Login/Signup</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     
     <main class="flex-grow">
       <RouterView />
     </main>
     
-    <footer class="bg-gray-9500 text-white p-4 text-center">
-      <p>&copy; 2024 Travel X Car Booking. All rights reserved.</p>
+    <footer class="bg-gray-950 text-white p-4 text-center">
+      <p>&copy; 2024 Zuri-Link. All rights reserved.</p>
     </footer>
   </div>
 </template>
