@@ -5,7 +5,7 @@ import CarCard from '@/components/car/CarCard.vue';
 import { useCarStore } from '@/stores/carStore';
 
 const carStore = useCarStore();
-const featuredCars = ref(carStore.getFeaturedCars());
+const featuredCars = ref(carStore.getFeaturedCars.value);
 </script>
 <template>
   <div class="home-view">
@@ -79,16 +79,6 @@ const featuredCars = ref(carStore.getFeaturedCars());
     </footer>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-import Button from '@/components/common/Button.vue';
-import CarCard from '@/components/car/CarCard.vue';
-import { useCarStore } from '@/stores/carStore';
-
-const carStore = useCarStore();
-const featuredCars = ref(carStore.getFeaturedCars.value);
-</script>
 
 <style scoped>
 .hero {
