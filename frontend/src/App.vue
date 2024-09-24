@@ -1,121 +1,60 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import Button from '@/components/common/Button.vue';
-import CarCard from '@/components/car/CarCard.vue';
-import { useCarStore } from '@/stores/carStore';
+<script setup>
+import { RouterView } from 'vue-router';
+import Airplane from 'vue-material-design-icons/Airplane.vue';
 import MapMarker from 'vue-material-design-icons/MapMarker.vue';
-import MapMarkerOutline from 'vue-material-design-icons/MapMarkerOutline.vue';
-
-const carStore = useCarStore();
-const featuredCars = ref(carStore.getFeaturedCars.value);
+import Book from 'vue-material-design-icons/Book.vue';
+import Account from 'vue-material-design-icons/Account.vue';
 </script>
 
 <template>
-  <div class="home-view">
-    <!-- Hero Section -->
-    <section class="hero bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('@/assets/hero-bg.jpg');">
-      <div class="text-center">
-        <h1 class="text-5xl font-bold mb-6">Seamless Airport Transfers</h1>
-        <div class="search-bar bg-white text-black p-4 rounded-lg shadow-lg flex items-center space-x-2">
-          <div class="relative flex-grow">
-            <MapMarker class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input type="text" placeholder="From" class="p-3 pl-10 rounded-md border border-gray-300 w-full" />
-          </div>
-          <div class="relative flex-grow">
-            <MapMarkerOutline class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input type="text" placeholder="To" class="p-3 pl-10 rounded-md border border-gray-300 w-full" />
-          </div>
-          <input type="number" placeholder="Passengers" class="p-3 rounded-md border border-gray-300 w-32" />
-          <input type="date" class="p-3 rounded-md border border-gray-300 w-40" id="start-date" />
-          <button class="p-3 bg-orange-500 hover:bg-orange-600 rounded-md text-white">Book Now</button>
-        </div>
+  <div class="min-h-screen flex flex-col">
+    <header class="header bg-white shadow-md">
+      <div class="container mx-auto flex justify-between items-center py-4">
+        <div class="logo text-2xl font-bold">Zuri-Link</div>
+        <nav class="nav">
+          <ul class="flex space-x-4">
+  <li>
+    <a href="#" class="flex items-center space-x-1 text-gray-700 rounded-full hover:bg-gray-100 p-2">
+      <Airplane class="text-gray-700" />
+      <span>Airport Transfers</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="flex items-center space-x-1 text-gray-700 rounded-full hover:bg-gray-100 p-2">
+      <MapMarker class="text-gray-700" />
+      <span>Browse by Destination</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="flex items-center space-x-1 text-gray-700 rounded-full hover:bg-gray-100 p-2">
+      <Book class="text-gray-700" />
+      <span>My Bookings</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="flex items-center space-x-1 text-gray-700 rounded-full hover:bg-gray-100 p-2">
+      <Account class="text-gray-700" />
+      <span>Login/Signup</span>
+    </a>
+  </li>
+</ul>
+        </nav>
       </div>
-    </section>
-
-    <!-- Featured Listings Section -->
-    <section class="featured-listings py-16 bg-gray-100">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-orange-500">Top Airport Transfer Options</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <CarCard v-for="car in featuredCars" :key="car.id" :car="car" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us py-16 bg-white">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-orange-500">Why Choose Our Transfers?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="benefit-card p-6 bg-orange-100 shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Hassle-Free Booking</h3>
-            <p class="mt-4">Book your airport transfer effortlessly with our intuitive platform.</p>
-          </div>
-          <div class="benefit-card p-6 bg-orange-100 shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Reliable Service</h3>
-            <p class="mt-4">Count on us for timely and dependable airport transfers.</p>
-          </div>
-          <div class="benefit-card p-6 bg-orange-100 shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Affordable Rates</h3>
-            <p class="mt-4">Enjoy competitive pricing on all our airport transfer services.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- What We Offer Section -->
-    <section class="what-we-offer py-16 bg-gray-100">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-orange-500">Our Airport Transfer Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="offer-card p-6 bg-white shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Flexible Booking</h3>
-            <p class="mt-4">Use our "free cancellation" filter for hassle-free bookings.</p>
-          </div>
-          <div class="offer-card p-6 bg-white shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Price Alerts</h3>
-            <p class="mt-4">Set alerts to get notified when prices drop.</p>
-          </div>
-          <div class="offer-card p-6 bg-white shadow-md rounded-md text-center">
-            <h3 class="text-2xl font-bold">Customizable Filters</h3>
-            <p class="mt-4">Filter results by vehicle type, amenities, and more to suit your needs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials py-16 bg-gray-100">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 text-orange-500">What Our Customers Say</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Add testimonial cards here -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer bg-white py-8">
-      <div class="container mx-auto text-center">
-        <ul class="flex justify-center space-x-4 mb-4">
-          <li><a href="#" class="text-gray-700">Contact Us</a></li>
-          <li><a href="#" class="text-gray-700">Privacy Policy</a></li>
-          <li><a href="#" class="text-gray-700">Terms of Service</a></li>
-        </ul>
-        <div class="social-media">
-          <!-- Add social media links here -->
-        </div>
-      </div>
+    </header>
+    
+    <main class="flex-grow">
+      <RouterView />
+    </main>
+    
+    <footer class="bg-gray-950 text-white p-4 text-center">
+      <p>&copy; 2024 Zuri-Link. All rights reserved.</p>
     </footer>
   </div>
 </template>
 
 <style scoped>
-.hero {
-  background-color: #1a202c; /* Fallback color */
+a {
+  transition: color 0.3s, background-color 0.3s;
 }
-.search-bar {
-  max-width: 1000px;
-  margin: 0 auto;
-}
+
 </style>
