@@ -5,7 +5,7 @@ import CarCard from '@/components/car/CarCard.vue';
 import { useCarStore } from '@/stores/carStore';
 
 const carStore = useCarStore();
-// const featuredCars = ref(carStore.getFeaturedCars());
+const featuredCars = ref(carStore.getFeaturedCars());
 </script>
 
 <template>

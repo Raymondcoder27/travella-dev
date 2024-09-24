@@ -4,8 +4,8 @@ import { RouterView } from 'vue-router';
 
 <template>
   <div class="min-h-screen flex flex-col">
-    <header class="bg-green-600 text-white p-4">
-      <h1 class="text-2xl font-bold">Travel X Car Booking</h1>
+    <header class="bg-black-900 text-white p-4">
+      <h1 class="text-2xl font-bold">Zuri-Link</h1>
     </header>
     
     <main class="flex-grow">
