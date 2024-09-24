@@ -12,17 +12,17 @@ const featuredCars = ref(carStore.getFeaturedCars.value);
   <div class="home-view">
     <!-- Hero Section -->
     <section class="hero bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('@/assets/hero-bg.jpg');">
-      <div class="text-center">
-        <h1 class="text-5xl font-bold">Seamless Airport Transfers</h1>
-        <div class="mt-6 flex justify-center space-x-2">
-          <input type="text" placeholder="From" class="p-2 rounded-md text-black" />
-          <input type="text" placeholder="To" class="p-2 rounded-md text-black" />
-          <input type="number" placeholder="Passengers" class="p-2 rounded-md text-black" />
-          <input type="date" placeholder="Start Date" class="p-2 rounded-md text-black" />
-          <button class="p-2 bg-orange-500 hover:bg-orange-600 rounded-md text-white">Book Now</button>
-        </div>
-      </div>
-    </section>
+  <div class="text-center">
+    <h1 class="text-5xl font-bold mb-6">Seamless Airport Transfers</h1>
+    <div class="search-bar bg-white text-black p-4 rounded-lg shadow-lg flex items-center space-x-2">
+      <input type="text" placeholder="From" class="p-3 rounded-md border border-gray-300 flex-grow" />
+      <input type="text" placeholder="To" class="p-3 rounded-md border border-gray-300 flex-grow" />
+      <input type="number" placeholder="Passengers" class="p-3 rounded-md border border-gray-300 w-32" />
+      <input type="date" class="p-3 rounded-md border border-gray-300 w-40" id="start-date" />
+      <button class="p-3 bg-orange-500 hover:bg-orange-600 rounded-md text-white">Book Now</button>
+    </div>
+  </div>
+</section>
 
     <!-- Featured Listings Section -->
     <section class="featured-listings py-16 bg-gray-100">
@@ -105,5 +105,9 @@ const featuredCars = ref(carStore.getFeaturedCars.value);
 <style scoped>
 .hero {
   background-color: #1a202c; /* Fallback color */
+}
+.search-bar {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 </style>
